@@ -1,0 +1,1 @@
+python DANN.py --backbone "MLPNet"
