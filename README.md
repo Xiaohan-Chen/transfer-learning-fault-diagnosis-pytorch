@@ -10,14 +10,6 @@ This respository contains popular deep learning algorithms implemented for fault
 - [ ] *Open-set domain adaptation*: the distribution of the source domain data may be different from the target domain data. What's more, the target label set contains unknown categories, i.e., $\mathcal{D} _{s}=(X_s,Y_s)$, $\mathcal{D} _{t}=(X_t,Y_t)$, $X_s \ne X_t$, $Y_s \in Y_t$. We refer to their common categories $\mathcal{Y}_s\cap \mathcal{Y}_t$ as the *known classes*, and $\mathcal{Y}_s\setminus \mathcal{Y}_t$ (or $\mathcal{Y}_t\setminus \mathcal{Y}_s$) in the target domain as the *unknown class*.
   - [x] [Open Set Domain Adaptation by Backpropagation (OSDABP)](http://openaccess.thecvf.com/content_ECCV_2018/papers/Kuniaki_Saito_Adversarial_Open_Set_ECCV_2018_paper.pdf)
 
-- [ ] *Few-shot learning*: Compared with standard classification, few-shot classification tasks require we have only few training samples of each class.
-  - [ ] [Siamese Neural Networks for One-shot Image Recognition](https://www.cs.cmu.edu/~rsalakhu/papers/oneshot1.pdf) [[*Code (unofficial)*]](https://github.com/fangpin/siamese-pytorch)
-
-- [ ] *Self-supervised learning*: 
-
-- [ ] *Universal domain adaptation*: the distribution of the source domain domain data may be different from the target domain. In addition, the target label set is unknwon, and we do not known the relationships between the source label set and the target label set.
-  - [ ] TBD
-  - [ ] TBD
 
 ---
 ## :wrench: 2. Requirements
@@ -41,17 +33,17 @@ This respository contains popular deep learning algorithms implemented for fault
 **General Classification task:**
 - Train and test the model on same machines, working conditions and faults. Using following commands:
 ```python
-python3 main.py --task "CLS" --backbone "MLPNet"
+python3 classification.py --mat_epoch 100
 ```
 
 **Transfer Learning:**
 - If using the DDC transfer learning method, applying following commands:
 ```python
-python3 main.py --task "DDC" --backbone "CNN1D" --max_epoch 500
+python3 DDC.py -backbone "CNN1D" --max_epoch 100
 ```
 - If using the DANN transfer learning method, applying following commands:
 ```python
-python3 main.py --task "DANN" --backbone "CNN1D" --max_epoch 500
+python3 DANN.py --backbone "CNN1D"
 ```
 
 **Open Set Domain Adaptation:**
