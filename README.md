@@ -1,4 +1,4 @@
-# Deep transfer learing-based bearing fault diagnosis
+# Deep transfer learing for fault diagnosis
 
 ## :book: 1. Introduction
 This repository contains popular deep transfer learning algorithms implemented via PyTorch for cross-load fault diagnosis transfer tasks, including:  
