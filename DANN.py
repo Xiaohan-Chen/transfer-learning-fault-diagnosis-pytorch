@@ -26,7 +26,7 @@ def parse_args():
     parser.add_argument("--log_file", type=str, default="./logs/DANN.log", help="log file path")
 
     # dataset information
-    parser.add_argument("--datadir", type=str, default="../datasets", help="data directory")
+    parser.add_argument("--datadir", type=str, default="./datasets", help="data directory")
     parser.add_argument("--source_dataname", type=str, default="CWRU", choices=["CWRU", "PU"], help="choice a dataset")
     parser.add_argument("--target_dataname", type=str, default="CWRU", choices=["CWRU", "PU"], help="choice a dataset")
     parser.add_argument("--s_load", type=int, default=3, help="source domain working condition")

@@ -26,9 +26,9 @@ def parse_args():
     parser.add_argument("--log_file", type=str, default="./logs/DDC.log", help="log file path")
 
     # dataset information
-    parser.add_argument("--datadir", type=str, default="../datasets", help="data directory")
-    parser.add_argument("--source_dataname", type=str, default="CWRU", choices=["CWRU", "PU"], help="choice a dataset")
-    parser.add_argument("--target_dataname", type=str, default="CWRU", choices=["CWRU", "PU"], help="choice a dataset")
+    parser.add_argument("--datadir", type=str, default="./datasets", help="data directory")
+    parser.add_argument("--source_dataname", type=str, default="CWRU", choices=["CWRU"], help="choice a dataset")
+    parser.add_argument("--target_dataname", type=str, default="CWRU", choices=["CWRU"], help="choice a dataset")
     parser.add_argument("--s_load", type=int, default=3, help="source domain working condition")
     parser.add_argument("--t_load", type=int, default=2, help="target domain working condition")
     parser.add_argument("--s_label_set", type=list, default=[0,1,2,3,4,5,6,7,8,9], help="source domain label set")
@@ -60,6 +60,7 @@ def parse_args():
     parser.add_argument('--gamma', type=float, default=0.8, help='learning rate scheduler parameter for step and exp')
     parser.add_argument('--steps', type=str, default='30, 120', help='the learning rate decay for step and stepLR')
     parser.add_argument("--optimizer", type=str, default="adam", choices=["adam", "sgd"])
+    parser.add_argument("--kernel", type=str, default='Linear', choices=["Linear", "CORAL"])
 
 
     args = parser.parse_args()
@@ -107,11 +108,15 @@ class Classifier(nn.Module):
 def loaddata(args):
     if args.source_dataname == "CWRU":
         source_data, source_label = CWRUloader(args, args.s_load, args.s_label_set)
+    else:
+        raise NotImplementedError("Source dataset {} not implemented.".format(args.source_dataname))
 
     source_data, source_label = np.concatenate(source_data, axis=0), np.concatenate(source_label, axis=0)
     
     if args.target_dataname == "CWRU":
         target_data, target_label = CWRUloader(args, args.t_load, args.t_label_set)
+    else:
+        raise NotImplementedError("Target dataset {} not implemented.".format(args.target_dataname))
 
     target_data, target_label = np.concatenate(target_data, axis=0), np.concatenate(target_label, axis=0)
 
@@ -179,8 +184,12 @@ def trainer(args):
 
     # define loss function
     loss_cls = nn.CrossEntropyLoss()
-    loss_dis = MMDLinear.MMDLinear
-    #loss_dis = CORAL.CORAL_loss
+    if args.kernel == "Linear":
+        loss_dis = MMDLinear.MMDLinear
+    elif args.kernel == "CORAL":
+        loss_dis = CORAL.CORAL_loss
+    else:
+        raise NotImplemented("Kernel {} not implemented.".format(args.kernel))
 
     featurenet.to(device)
     classifier.to(device)

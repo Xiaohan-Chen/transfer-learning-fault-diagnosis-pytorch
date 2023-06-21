@@ -23,15 +23,15 @@ def parse_args():
     parser = argparse.ArgumentParser(description='Implementation of Deep Domain Confusion networks')
 
     # task setting
-    parser.add_argument("--log_file", type=str, default="./logs/DDC.log", help="log file path")
+    parser.add_argument("--log_file", type=str, default="./logs/OSDABP.log", help="log file path")
 
     # dataset information
-    parser.add_argument("--datadir", type=str, default="../datasets", help="data directory")
+    parser.add_argument("--datadir", type=str, default="./datasets", help="data directory")
     parser.add_argument("--source_dataname", type=str, default="CWRU", choices=["CWRU", "PU"], help="choice a dataset")
     parser.add_argument("--target_dataname", type=str, default="CWRU", choices=["CWRU", "PU"], help="choice a dataset")
     parser.add_argument("--s_load", type=int, default=3, help="source domain working condition")
     parser.add_argument("--t_load", type=int, default=2, help="target domain working condition")
-    parser.add_argument("--s_label_set", type=list, default=[0,1,2,3,4,5,6,7,8,9], help="source domain label set")
+    parser.add_argument("--s_label_set", type=list, default=[0,1,2,3,4,5], help="source domain label set")
     parser.add_argument("--t_label_set", type=list, default=[0,1,2,3,4,5,6,7,8,9], help="target domain label set")
     parser.add_argument("--val_rat", type=float, default=0.3, help="training-validation rate")
     parser.add_argument("--test_rat", type=float, default=0.5, help="validation-test rate")
@@ -112,7 +112,6 @@ class Classifier(nn.Module):
     def forward(self, logits, reverse = False):
         if reverse:
             logits = grad_reverse(logits)
-        print(logits)
         outputs = self.classifier(logits)
 
         return outputs

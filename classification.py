@@ -25,8 +25,7 @@ def parse_args():
     parser.add_argument("--log_file", type=str, default="./logs/classification.log", help="log file path")
 
     # dataset information
-    parser.add_argument("--datadir", type=str, default="../datasets", help="data directory")
-    parser.add_argument("--dataname", type=str, default="CWRU", choices=["CWRU", "PU"], help="choice a dataset")
+    parser.add_argument("--datadir", type=str, default="./datasets", help="data directory")
     parser.add_argument("--load", type=int, default=3, help="working condition")
     parser.add_argument("--label_set", type=list, default=[0,1,2,3,4,5,6,7,8,9], help="label set")
     parser.add_argument("--val_rat", type=float, default=0.3, help="training-validation rate")
@@ -101,7 +100,7 @@ class Classifier(nn.Module):
 
 # ===== Load Data =====
 def loaddata(args):
-    data, label = CWRUloader(args, args.load, args.label_Set)
+    data, label = CWRUloader(args, args.load, args.label_set)
     data, label = np.concatenate(data, axis=0), np.concatenate(label, axis=0)
     
     train_loader, val_loader, test_laoder = utils.DataSplite(args, data, label)
@@ -205,7 +204,7 @@ def trainer(args):
         meters["acc_train"].append(train_acc)
         meters["acc_val"].append(val_acc)
 
-    logging.info("Best accuracy: {:.4f}".format(best_acc))
+    logging.info("Best accuracy: {:.4f}%".format(best_acc))
     utils.save_log(meters, "./logs/cls_{}_{}_meters.pkl".format(args.backbone, args.max_epoch))
 
     logging.info("="*15+"Done!"+"="*15)
