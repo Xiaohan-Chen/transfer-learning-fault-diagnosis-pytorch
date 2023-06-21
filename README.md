@@ -6,13 +6,16 @@ This respository contains popular deep transfer learning algorithms implemented 
 - [x] General classification task: traing and test apply the same machines, working conditions and faults.
 
 - [x] *domain adaptation*: the distribution of the source domain data may be different from the target domain data, but the label set of the target domain is the same as the source domain, i.e., $\mathcal{D} _{s}=(X_s,Y_s)$, $\mathcal{D} _{t}=(X_t,Y_t)$, $X_s \ne X_t$, $Y_s = Y_t$.
-  - [x] [Deep Domain Confusion (DDC)](https://arxiv.org/pdf/1412.3474.pdf) (including [DeepCORAL](https://arxiv.org/abs/1607.01719))
+  - [x] [Deep Domain Confusion (DDC)](https://arxiv.org/pdf/1412.3474.pdf)
+  - [x] [DeepCORAL](https://arxiv.org/abs/1607.01719)
   - [x] [Unsupervised Domain Adaptation by Backpropagation(DANN)](http://proceedings.mlr.press/v37/ganin15.pdf)
   - [ ] TODO
 
 - [x] *Open-set domain adaptation*: the distribution of the source domain data may be different from the target domain data. What's more, the target label set contains unknown categories, i.e., $\mathcal{D} _{s}=(X_s,Y_s)$, $\mathcal{D} _{t}=(X_t,Y_t)$, $X_s \ne X_t$, $Y_s \in Y_t$. We refer to their common categories $\mathcal{Y}_s\cap \mathcal{Y}_t$ as the *known classes*, and $\mathcal{Y}_s\setminus \mathcal{Y}_t$ (or $\mathcal{Y}_t\setminus \mathcal{Y}_s$) in the target domain as the *unknown class*.
   - [x] [Open Set Domain Adaptation by Backpropagation (OSDABP)](http://openaccess.thecvf.com/content_ECCV_2018/papers/Kuniaki_Saito_Adversarial_Open_Set_ECCV_2018_paper.pdf)
   - [ ] TODO
+
+For more tutorials on transfer learning, please see [Transfer Learning RePo](https://github.com/jindongwang/transferlearning#1introduction-and-tutorials-%E7%AE%80%E4%BB%8B%E4%B8%8E%E6%95%99%E7%A8%8B).
 
 If you find this repository useful and apply it in your works, please cite the following reference, thanks~:
 ```
@@ -26,7 +29,6 @@ If you find this repository useful and apply it in your works, please cite the f
   pages={1-21},
   doi={10.1109/TIM.2023.3244237}}
 ```
-
 
 ---
 ## :wrench: 2. Requirements
