@@ -1,9 +1,9 @@
 # Deep transfer learing-based bearing fault diagnosis
 
 ## :book: 1. Introduction
-This respository contains popular deep transfer learning algorithms implemented for cross-load fault diagnosis transfer tasks via PyTorch, including: 
+This repository contains popular deep transfer learning algorithms implemented via PyTorch for cross-load fault diagnosis transfer tasks, including:  
 
-- [x] General classification task: traing and test apply the same machines, working conditions and faults.
+- [x] General supervised learning classification task: traing and test apply the same machines, working conditions and faults.
 
 - [x] *domain adaptation*: the distribution of the source domain data may be different from the target domain data, but the label set of the target domain is the same as the source domain, i.e., $\mathcal{D} _{s}=(X_s,Y_s)$, $\mathcal{D} _{t}=(X_t,Y_t)$, $X_s \ne X_t$, $Y_s = Y_t$.
   - [x] [Deep Domain Confusion (DDC)](https://arxiv.org/pdf/1412.3474.pdf)
@@ -40,7 +40,7 @@ If you find this repository useful and apply it in your works, please cite the f
 
 ---
 ## :handbag: 3. Datasets
-Download the bearing dataset from [CWRU Bearing Dataset Centre](https://engineering.case.edu/bearingdatacenter/48k-drive-end-bearing-fault-data) and place the `.mat' files in the `./dataset' folder according to the following structure:
+Download the bearing dataset from [CWRU Bearing Dataset Centre](https://engineering.case.edu/bearingdatacenter/48k-drive-end-bearing-fault-data) and place the `.mat` files in the `./dataset` folder according to the following structure:
 ```
 dataset/
   └── CWRU/
@@ -58,30 +58,30 @@ dataset/
 ## :pencil: 4. Usage
 > **NOTE**: When using pre-trained models to initialise the backbone and classifier in transfer learning tasks, run classification tasks first to generate corresponding checkpoints.
 
-Four typical neural networks are implemented in this repository, including *MLP*, *1D CNN*, *1D ResNet18*, and *2D ResNet18* (torchvision package). More details can be found in the `./Backbone` folder.
+Four typical neural networks are implemented in this repository, including MLP, 1D CNN, 1D ResNet18, and 2D ResNet18(torchvision package). More details can be found in the `./Backbone` folder.
 
 **General Classification task:**
-- Train and test the model on same machines, working conditions and faults. Using following commands:
+- Train and test the model on the same machines, working conditions and faults. Use the following commands:
 ```python
 python3 classification.py --datadir './datasets' --max_epoch 100
 ```
 
 **Transfer Learning:**
-- If using the DDC transfer learning method, applying following commands:
+- If using the DDC transfer learning method, use the following commands:
 ```python
 python3 DDC.py --datadir './datasets' -backbone "CNN1D" --pretrained False --kernel 'Linear'
 ```
-- If using the DeepCORAL transfer learning method, applying following commands:
+- If using the DeepCORAL transfer learning method, use the following commands:
 ```python
 python3 DDC.py --datadir './datasets' -backbone "CNN1D" --pretrained False --kernel 'CORAL'
 ```
-- If using the DANN transfer learning method, applying following commands:
+- If using the DANN transfer learning method, use following commands:
 ```python
 python3 DANN.py --backbone "CNN1D"
 ```
 
 **Open Set Domain Adaptation:**
-- The target domain contains unknow classes, applying following commands:
+- The target domain contains unknow classes, use the following commands:
 ```python
 python OSDABP.py
 ```
@@ -89,7 +89,7 @@ python OSDABP.py
 ## :flashlight: 5. Results
 > The following results do not represent the best results.
 
-**General Classification task:**
+**General Classification task:**  
 Dataset: CWRU
 Load: 3  
 Label set: [0,1,2,3,4,5,6,7,8,9]  
@@ -99,7 +99,7 @@ Label set: [0,1,2,3,4,5,6,7,8,9]
 |acc (time domain)|  93.95 | 97.70 |   99.58  |   98.02  |
 |acc (freq domain)|  99.95 | 99.44 |   100.0  |   99.96  |
 
-**Transfer Learning:**
+**Transfer Learning:**  
 Dataset: CWRU  
 Source load: 3  
 Target Load: 2  
@@ -119,7 +119,7 @@ Frequency domain
 | DeepCORAL |  98.65 | 98.22 |   99.75  |   99.31  |
 |    DANN   |  99.38 | 98.74 |   99.89  |   99.47  |
 
-**Open Set Domain Adaptation**
+**Open Set Domain Adaptation**  
 - *OSDABP*
 Dataset: CWRU  
 Source load: 3  
