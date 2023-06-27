@@ -30,24 +30,6 @@ def save_model(model, args):
     else:
         torch.save(model.state_dict(), "./checkpoints/{}FFT_checkpoint.tar".format(args.backbone))
 
-class EMA(object):
-    """
-    Exponential moving average weight optimizer for mean teacher model
-    """
-    def __init__(self, target_net, source_net, alpha=0.999):
-        self.target_params = list(target_net.parameters())
-        self.source_params = list(source_net.parameters())
-        self.alpha = alpha
-
-        for p, src_p in zip(self.target_params, self.source_params):
-            p.data[:] = src_p.data[:]
-
-    def step(self):
-        one_minus_alpha = 1.0 - self.alpha
-        for p, src_p in zip(self.target_params, self.source_params):
-            p.data.mul_(self.alpha) # p.dtype = torch.float32
-            p.data.add_(src_p.data * one_minus_alpha)
-
 def DataSplite(args, data, label):
     """
     split the data and lebel and transform the narray type to tensor type

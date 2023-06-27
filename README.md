@@ -15,9 +15,9 @@ This repository contains popular deep transfer learning algorithms implemented v
   - [x] [Open Set Domain Adaptation by Backpropagation (OSDABP)](http://openaccess.thecvf.com/content_ECCV_2018/papers/Kuniaki_Saito_Adversarial_Open_Set_ECCV_2018_paper.pdf)
   - [ ] TODO
 
-For more tutorials on transfer learning, please see [Transfer Learning RePo](https://github.com/jindongwang/transferlearning#1introduction-and-tutorials-%E7%AE%80%E4%BB%8B%E4%B8%8E%E6%95%99%E7%A8%8B).
+## :balloon: 2. Citation
 
-If you find this repository useful and apply it in your works, please cite the following reference, thanks~:
+For further introductions to transfer learning in bearing fault diagnosis, please read our paper. And if you find this repository useful and use it in your work, please cite the following paper, thank you~:
 ```
 @ARTICLE{10042467,
   author={Chen, Xiaohan and Yang, Rui and Xue, Yihao and Huang, Mengjie and Ferrero, Roberto and Wang, Zidong},
@@ -31,7 +31,7 @@ If you find this repository useful and apply it in your works, please cite the f
 ```
 
 ---
-## :wrench: 2. Requirements
+## :wrench: 3. Requirements
 - python 3.9.12
 - Numpy 1.23.1
 - pytorch 1.12.0
@@ -39,7 +39,7 @@ If you find this repository useful and apply it in your works, please cite the f
 - torchvision 0.13.0
 
 ---
-## :handbag: 3. Datasets
+## :handbag: 4. Dataset
 Download the bearing dataset from [CWRU Bearing Dataset Centre](https://engineering.case.edu/bearingdatacenter/48k-drive-end-bearing-fault-data) and place the `.mat` files in the `./dataset` folder according to the following structure:
 ```
 dataset/
@@ -55,7 +55,7 @@ dataset/
 ```
 
 ---
-## :pencil: 4. Usage
+## :pencil: 5. Usage
 > **NOTE**: When using pre-trained models to initialise the backbone and classifier in transfer learning tasks, run classification tasks first to generate corresponding checkpoints.
 
 Four typical neural networks are implemented in this repository, including MLP, 1D CNN, 1D ResNet18, and 2D ResNet18(torchvision package). More details can be found in the `./Backbone` folder.
@@ -83,10 +83,10 @@ python3 DANN.py --backbone "CNN1D"
 **Open Set Domain Adaptation:**
 - The target domain contains unknow classes, use the following commands:
 ```python
-python OSDABP.py
+python3 OSDABP.py
 ```
 ---
-## :flashlight: 5. Results
+## :flashlight: 6. Results
 > The following results do not represent the best results.
 
 **General Classification task:**  
@@ -137,10 +137,11 @@ Pre-trained model: True
 
 
 ---
-## :camping: 6. See also
+## :camping: 7. See also
 - Multi-scale CNN and LSTM bearing fault diagnosis [[paper](https://link.springer.com/article/10.1007/s10845-020-01600-2)][[GitHub](https://github.com/Xiaohan-Chen/baer_fault_diagnosis)]
 
-## :globe_with_meridians: 7. Acknowledgement
+---
+## :globe_with_meridians: 8. Acknowledgement
 
 ```
 @article{zhao2021applications,
