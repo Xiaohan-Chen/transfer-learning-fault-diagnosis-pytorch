@@ -7,7 +7,7 @@ This repository contains popular deep transfer learning algorithms implemented v
 
 - [x] *domain adaptation*: the distribution of the source domain data may be different from the target domain data, but the label set of the target domain is the same as the source domain, i.e., $\mathcal{D} _{s}=(X_s,Y_s)$, $\mathcal{D} _{t}=(X_t,Y_t)$, $X_s \ne X_t$, $Y_s = Y_t$.
   - [x] [Deep Domain Confusion (DDC)](https://arxiv.org/pdf/1412.3474.pdf)
-  - [x] [DeepCORAL](https://arxiv.org/abs/1607.01719)
+  - [x] [Deep CORAL: Correlation Alignment for Deep Domain Adaptation (DeepCORAL)](https://arxiv.org/abs/1607.01719)
   - [x] [Unsupervised Domain Adaptation by Backpropagation(DANN)](http://proceedings.mlr.press/v37/ganin15.pdf)
   - [ ] TODO
 
@@ -17,7 +17,7 @@ This repository contains popular deep transfer learning algorithms implemented v
 
 ## :balloon: 2. Citation
 
-For further introductions to transfer learning in bearing fault diagnosis, please read our paper. And if you find this repository useful and use it in your work, please cite the following paper, thank you~:
+For further introductions to transfer learning in bearing fault diagnosis, please read our paper. And if you find this repository useful and use it in your works, please cite our paper, thank you~:
 ```
 @ARTICLE{10042467,
   author={Chen, Xiaohan and Yang, Rui and Xue, Yihao and Huang, Mengjie and Ferrero, Roberto and Wang, Zidong},
@@ -60,26 +60,25 @@ dataset/
 
 Four typical neural networks are implemented in this repository, including MLP, 1D CNN, 1D ResNet18, and 2D ResNet18(torchvision package). More details can be found in the `./Backbone` folder.
 
-**General Classification task:**
+**General Supervised Learning Classification:**
 - Train and test the model on the same machines, working conditions and faults. Use the following commands:
 ```python
-python3 classification.py --datadir './datasets' --max_epoch 100
+python3 classification.py --datadir './dataset' --max_epoch 100
 ```
 
 **Transfer Learning:**
 - If using the DDC transfer learning method, use the following commands:
 ```python
-python3 DDC.py --datadir './datasets' -backbone "CNN1D" --pretrained False --kernel 'Linear'
+python3 DDC.py --datadir './dataset' -backbone "CNN1D" --pretrained False --kernel 'Linear'
 ```
 - If using the DeepCORAL transfer learning method, use the following commands:
 ```python
-python3 DDC.py --datadir './datasets' -backbone "CNN1D" --pretrained False --kernel 'CORAL'
+python3 DDC.py --datadir './dataset' -backbone "CNN1D" --pretrained False --kernel 'CORAL'
 ```
 - If using the DANN transfer learning method, use following commands:
 ```python
 python3 DANN.py --backbone "CNN1D"
 ```
-
 **Open Set Domain Adaptation:**
 - The target domain contains unknow classes, use the following commands:
 ```python
@@ -90,14 +89,14 @@ python3 OSDABP.py
 > The following results do not represent the best results.
 
 **General Classification task:**  
-Dataset: CWRU
+Dataset: CWRU  
 Load: 3  
 Label set: [0,1,2,3,4,5,6,7,8,9]  
 
-|                 | MLPNet | CNN1D | ResNet1D | ResNet2D |
-|:---------------:|:------:|:-----:|:--------:|:--------:|
-|acc (time domain)|  93.95 | 97.70 |   99.58  |   98.02  |
-|acc (freq domain)|  99.95 | 99.44 |   100.0  |   99.96  |
+|                   | MLPNet | CNN1D | ResNet1D | ResNet2D |
+| :---------------: | :----: | :---: | :------: | :------: |
+| acc (time domain) | 93.95  | 97.70 |  99.58   |  98.02   |
+| acc (freq domain) | 99.95  | 99.44 |  100.0   |  99.96   |
 
 **Transfer Learning:**  
 Dataset: CWRU  
@@ -107,17 +106,17 @@ Label set: [0,1,2,3,4,5,6,7,8,9]
 Pre-trained model: True  
 
 Time domain:  
-|           | MLPNet | CNN1D | ResNet1D | ResNet2D |
-|:---------:|:------:|:-----:|:--------:|:--------:|
-|DDC (linear kernel)|  75.47 | 85.53 |   91.79  |   91.32  |
-| DeepCORAL |  82.33 | 88.23 |   93.88  |   90.84  |
-|    DANN   |  87.68 | 94.77 |   98.88  |   93.95  |
+|                     | MLPNet | CNN1D | ResNet1D | ResNet2D |
+| :-----------------: | :----: | :---: | :------: | :------: |
+| DDC (linear kernel) | 75.47  | 85.53 |  91.79   |  91.32   |
+|      DeepCORAL      | 82.33  | 88.23 |  93.88   |  90.84   |
+|        DANN         | 87.68  | 94.77 |  98.88   |  93.95   |
 
 Frequency domain
 |           | MLPNet | CNN1D | ResNet1D | ResNet2D |
-|:---------:|:------:|:-----:|:--------:|:--------:|
-| DeepCORAL |  98.65 | 98.22 |   99.75  |   99.31  |
-|    DANN   |  99.38 | 98.74 |   99.89  |   99.47  |
+| :-------: | :----: | :---: | :------: | :------: |
+| DeepCORAL | 98.65  | 98.22 |  99.75   |  99.31   |
+|   DANN    | 99.38  | 98.74 |  99.89   |  99.47   |
 
 **Open Set Domain Adaptation**  
 - *OSDABP*
@@ -128,10 +127,10 @@ Source label set: [0,1,2,3,4,5]
 Target label set: [0,1,2,3,4,5,6,7,8,9]  
 Pre-trained model: True  
 
-|   Label  |   0   |   1   |   2   |   3   |   4   |   5   |  unk  | All   | Only known |
-|:--------:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|-------|------------|
+|  Label   |   0   |   1   |   2   |   3   |   4   |   5   |  unk  | All   | Only known |
+| :------: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | ----- | ---------- |
 |  MLPNet  | 99.83 | 95.96 | 59.76 | 76.10 | 19.85 | 96.58 | 59.21 | 70.21 | 75.99      |
-|   CNN1D  | 100.0 | 94.95 | 94.47 | 99.08 | 47.31 | 74.32 | 26.36 | 61.75 | 85.35      |
+|  CNN1D   | 100.0 | 94.95 | 94.47 | 99.08 | 47.31 | 74.32 | 26.36 | 61.75 | 85.35      |
 | ResNet1D | 100.0 | 100.0 | 80.14 | 100.0 | 43.32 | 93.49 | 45.22 | 70.04 | 86.58      |
 | ResNet2D | 100.0 | 100.0 | 94.82 | 100.0 | 18.55 | 98.12 | 53.42 | 72.95 | 85.96      |
 
