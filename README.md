@@ -15,6 +15,10 @@ This repository contains popular deep transfer learning algorithms implemented v
   - [x] [Open Set Domain Adaptation by Backpropagation (OSDABP)](http://openaccess.thecvf.com/content_ECCV_2018/papers/Kuniaki_Saito_Adversarial_Open_Set_ECCV_2018_paper.pdf)
   - [ ] TODO
 
+- [ ] *Few-shot learning*: The target domain only includes limited data, conventional transfer learning methods fail to predict correct labels.
+  - [ ] [Siamese Network](https://www.cs.cmu.edu/~rsalakhu/papers/oneshot1.pdf)
+  - [ ] [Matching Network](https://arxiv.org/abs/1606.04080)
+
 ## :balloon: 2. Citation
 
 For further introductions to transfer learning in bearing fault diagnosis, please read our paper. And if you find this repository useful and use it in your works, please cite our paper, thank you~:
