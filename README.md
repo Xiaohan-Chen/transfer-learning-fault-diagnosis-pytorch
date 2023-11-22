@@ -42,12 +42,12 @@ For further introductions to transfer learning in bearing fault diagnosis, pleas
 
 ---
 ## :handbag: 4. Dataset
-Download the bearing dataset from [CWRU Bearing Dataset Center](https://engineering.case.edu/bearingdatacenter/48k-drive-end-bearing-fault-data) and place the `.mat` files in the `./dataset` folder according to the following structure:
+Download the bearing dataset from [CWRU Bearing Dataset Center](https://engineering.case.edu/bearingdatacenter/48k-drive-end-bearing-fault-data) and place the `.mat` files in the `./datasets` folder according to the following structure:
 ```
-dataset/
+datasets/
   └── CWRU/
       ├── Drive_end_0/
-      │   └── 97.mat 109.mat 122.mat 135.mat 173.mat 189.mat 201.mat 213.mat 226.mat 238.mat
+      │   └── 97.mat 109.mat 122.mat 135.mat 174.mat 189.mat 201.mat 213.mat 226.mat 238.mat
       ├── Drive_end_1/
       │   └── 98.mat 110.mat 123.mat 136.mat 175.mat 190.mat 202.mat 214.mat 227.mat  239.mat
       ├── Drive_end_2/
@@ -65,17 +65,17 @@ Four typical neural networks are implemented in this repository, including MLP, 
 **General Supervised Learning Classification:**
 - Train and test the model on the same machines, working conditions and faults. Use the following commands:
 ```python
-python3 classification.py --datadir './dataset' --max_epoch 100
+python3 classification.py --datadir './datasets' --max_epoch 100
 ```
 
 **Transfer Learning:**
 - If using the DDC transfer learning method, use the following commands:
 ```python
-python3 DDC.py --datadir './dataset' -backbone "CNN1D" --pretrained False --kernel 'Linear'
+python3 DDC.py --datadir './datasets' -backbone "CNN1D" --pretrained False --kernel 'Linear'
 ```
 - If using the DeepCORAL transfer learning method, use the following commands:
 ```python
-python3 DDC.py --datadir './dataset' -backbone "CNN1D" --pretrained False --kernel 'CORAL'
+python3 DDC.py --datadir './datasets' -backbone "CNN1D" --pretrained False --kernel 'CORAL'
 ```
 - If using the DANN transfer learning method, use following commands:
 ```python

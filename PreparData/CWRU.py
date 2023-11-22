@@ -8,7 +8,7 @@ from scipy.io import loadmat
 from PreparData.preprocess import transformation
 
 # datanames in every working conditions
-dataname_dict= {0:[97, 109, 122, 135, 173, 189, 201, 213, 226, 238],  # 1797rpm
+dataname_dict= {0:[97, 109, 122, 135, 174, 189, 201, 213, 226, 238],  # 1797rpm
                 1:[98, 110, 123, 136, 175, 190, 202, 214, 227, 239],  # 1772rpm
                 2:[99, 111, 124, 137, 176, 191, 203, 215, 228, 240],  # 1750rpm
                 3:[100,112, 125, 138, 177, 192, 204, 217, 229, 241]}  # 1730rpm
