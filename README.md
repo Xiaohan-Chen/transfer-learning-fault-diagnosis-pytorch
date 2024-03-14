@@ -140,6 +140,7 @@ Pre-trained model: True
 ---
 ## :camping: 7. See also
 - Multi-scale CNN and LSTM bearing fault diagnosis [[paper](https://link.springer.com/article/10.1007/s10845-020-01600-2)][[GitHub](https://github.com/Xiaohan-Chen/baer_fault_diagnosis)]
+- TFPred self-supervised learning for few labeled fault diagnosis [[Paper](https://www.sciencedirect.com/science/article/pii/S0967066124000601)][[GitHub](https://github.com/Xiaohan-Chen/TFPred)]
 
 ---
 ## :globe_with_meridians: 8. Acknowledgement
@@ -152,3 +153,5 @@ Pre-trained model: True
   year={2021}
 }
 ```
+
+I would like to thank the following person for contributing to this repository: [@Wang-Dongdong](https://github.com/Wang-Dongdong)

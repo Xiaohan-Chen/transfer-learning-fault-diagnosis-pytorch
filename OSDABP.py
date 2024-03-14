@@ -3,7 +3,6 @@ import os
 import numpy as np
 from Utils.logger import setlogger
 
-from turtle import forward
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -283,7 +282,11 @@ def trainer(args):
                 val_num += batch_size_val       # the number of predictions per batch
 
                 for i in range(num_out):
-                    index = np.where(y_val == i)
+                    if i < num_out -1:
+                        index = np.where(y_val == i) # known classes
+                    else:
+                        index = np.where(y_val >= i) # unknown classes 
+                                                     # Thanks to @Wang-Dongdong for reporting the bug
                     correct_ind = np.where(pre[index[0]]==i)
                     per_class_correct[i] += float(len(correct_ind[0]))
                     per_class_num[i] += float(len(index[0]))
@@ -296,8 +299,6 @@ def trainer(args):
                     best_acc = all_acc
             logging.info("Epoch: {:>3}/{}, loss_s: {:.4f}, loss_t: {:.4f}, all_acc: {:>6.2f}, known_acc: {:>6.2f}%".format(\
                     epoch+1, args.max_epoch, loss_s, loss_t, all_acc, known_acc))
-            #for i in range(num_out):
-            #    logging.info("Label {}: {:>6.2f}%".format(i, per_class_acc[i]))
 
     logging.info("Best all accuracy: {:.4f}".format(best_acc))
 
