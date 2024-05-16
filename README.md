@@ -154,4 +154,4 @@ Pre-trained model: True
 }
 ```
 
-I would like to thank the following person for contributing to this repository: [@Wang-Dongdong](https://github.com/Wang-Dongdong)
+I would like to thank the following person for contributing to this repository: [@Wang-Dongdong](https://github.com/Wang-Dongdong),[@zhuting233](https://github.com/zhuting233)

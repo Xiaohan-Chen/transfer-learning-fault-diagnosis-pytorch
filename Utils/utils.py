@@ -53,7 +53,7 @@ def DataSplite(args, data, label):
     # build the dataloader
     train = torch.utils.data.TensorDataset(data_train, label_train)
     val = torch.utils.data.TensorDataset(data_val, label_val)
-    test = torch.utils.data.TensorDataset(label_test, label_test)
+    test = torch.utils.data.TensorDataset(data_test, label_test)
 
     train_loader = torch.utils.data.DataLoader(train, batch_size=args.batch_size, \
         shuffle=True, num_workers=args.num_workers)
