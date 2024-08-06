@@ -71,11 +71,13 @@ python3 classification.py --datadir './datasets' --max_epoch 100
 **Transfer Learning:**
 - If using the DDC transfer learning method, use the following commands:
 ```python
-python3 DDC.py --datadir './datasets' -backbone "CNN1D" --pretrained False --kernel 'Linear'
+python3 DDC.py --datadir './datasets' --backbone "CNN1D" --pretrained False --kernel 'Linear'
+python3 classification.py --datadir '/home/xiaohan/codelab/datasets' --max_epoch 100
+python3 DDC.py --datadir '/home/xiaohan/codelab/datasets' --backbone "CNN1D" --kernel 'Linear'
 ```
 - If using the DeepCORAL transfer learning method, use the following commands:
 ```python
-python3 DDC.py --datadir './datasets' -backbone "CNN1D" --pretrained False --kernel 'CORAL'
+python3 DDC.py --datadir './datasets' --backbone "CNN1D" --pretrained False --kernel 'CORAL'
 ```
 - If using the DANN transfer learning method, use following commands:
 ```python
